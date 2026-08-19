@@ -1,0 +1,58 @@
+backend:
+  name: github
+  repo: msdidhbrud/msdihbrud.github.io
+  branch: main
+
+media_folder: "uploads/products"
+public_folder: "/uploads/products"
+
+collections:
+  - name: "products"
+    label: "Products"
+    folder: "products"
+    create: true
+    slug: "{{slug}}"
+
+    fields:
+      - label: "Product Name"
+        name: "title"
+        widget: "string"
+
+      - label: "Price (₹)"
+        name: "price"
+        widget: "number"
+        value_type: "int"
+
+      - label: "Product Images"
+        name: "images"
+        widget: "image"
+        allow_multiple: true
+
+      - label: "Colours"
+        name: "colors"
+        widget: "list"
+        field:
+          label: "Colour"
+          name: "color"
+          widget: "string"
+
+      - label: "Sizes"
+        name: "sizes"
+        widget: "list"
+        field:
+          label: "Size"
+          name: "size"
+          widget: "string"
+
+      - label: "Fabric"
+        name: "fabric"
+        widget: "string"
+
+      - label: "Description"
+        name: "description"
+        widget: "text"
+
+      - label: "Published"
+        name: "published"
+        widget: "boolean"
+        default: true
