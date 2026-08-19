@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0a">
+
+<title>NEfits — Built Different</title>
+<meta name="description" content="NEfits — Premium streetwear designed for everyday movement.">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#090909;
+  color:#f5f3ee;
+  font-family:'DM Sans',sans-serif;
+  overflow-x:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+img{
+  width:100%;
+  display:block;
+}
+
+button{
+  font:inherit;
+}
+
+/* NAVBAR */
+
+.nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:72px;
+  z-index:1000;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 6%;
+  background:rgba(9,9,9,.72);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:24px;
+  font-weight:700;
+  letter-spacing:-1.5px;
+}
+
+.logo span{
+  opacity:.45;
+}
+
+.nav-links{
+  display:flex;
+  gap:34px;
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+}
+
+.nav-links a{
+  opacity:.75;
+  transition:.3s;
+}
+
+.nav-links a:hover{
+  opacity:1;
+}
+
+.menu{
+  display:none;
+  font-size:25px;
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+  padding:130px 6% 65px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 70% 35%,rgba(255,255,255,.10),transparent 28%),
+    linear-gradient(120deg,#0a0a0a,#151515);
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    transparent 35%,
+    rgba(9,9,9,.25) 55%,
+    #090909 100%
+  );
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:850px;
+}
+
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:4px;
+  font-size:11px;
+  opacity:.55;
+  margin-bottom:22px;
+}
+
+.hero h1{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(58px,10vw,145px);
+  line-height:.86;
+  letter-spacing:-7px;
+  max-width:1000px;
+}
+
+.hero h1 em{
+  font-style:normal;
+  opacity:.42;
+}
+
+.hero-bottom{
+  margin-top:45px;
+  display:flex;
+  align-items:center;
+  gap:30px;
+}
+
+.hero-description{
+  max-width:360px;
+  font-size:14px;
+  line-height:1.7;
+  opacity:.62;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:145px;
+  height:52px;
+  padding:0 25px;
+  background:#f5f3ee;
+  color:#090909;
+  border-radius:100px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  transition:.35s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 35px rgba(255,255,255,.12);
+}
+
+/* MARQUEE */
+
+.marquee{
+  overflow:hidden;
+  border-top:1px solid rgba(255,255,255,.1);
+  border-bottom:1px solid rgba(255,255,255,.1);
+  padding:20px 0;
+  white-space:nowrap;
+}
+
+.marquee-track{
+  display:inline-block;
+  animation:marquee 22s linear infinite;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:12px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  opacity:.65;
+}
+
+.marquee-track span{
+  margin:0 35px;
+}
+
+@keyframes marquee{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* GENERAL */
+
+.section{
+  padding:130px 6%;
+}
+
+.section-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:55px;
+}
+
+.section-title{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(42px,6vw,78px);
+  line-height:.95;
+  letter-spacing:-4px;
+}
+
+.section-note{
+  max-width:260px;
+  font-size:12px;
+  line-height:1.7;
+  opacity:.5;
+}
+
+/* PRODUCTS */
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.product{
+  position:relative;
+  overflow:hidden;
+  background:#111;
+}
+
+.product-image{
+  aspect-ratio:4/5;
+  overflow:hidden;
+}
+
+.product-image img{
+  height:100%;
+  object-fit:cover;
+  transition:transform .8s cubic-bezier(.2,.7,.2,1);
+}
+
+.product:hover img{
+  transform:scale(1.045);
+}
+
+.product-info{
+  display:flex;
+  justify-content:space-between;
+  padding:18px 4px;
+}
+
+.product-name{
+  font-size:14px;
+  font-weight:600;
+}
+
+.product-type{
+  margin-top:5px;
+  font-size:11px;
+  opacity:.4;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.price{
+  font-size:14px;
+}
+
+/* EDITORIAL */
+
+.editorial{
+  min-height:75vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 75% 50%,#242424,transparent 35%),
+    #111;
+}
+
+.editorial-content{
+  max-width:650px;
+}
+
+.editorial h2{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(48px,7vw,100px);
+  line-height:.9;
+  letter-spacing:-5px;
+}
+
+.editorial p{
+  max-width:420px;
+  margin-top:30px;
+  font-size:14px;
+  line-height:1.8;
+  opacity:.55;
+}
+
+/* FEATURES */
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid rgba(255,255,255,.1);
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.feature{
+  padding:55px 35px;
+  border-right:1px solid rgba(255,255,255,.1);
+}
+
+.feature:last-child{
+  border-right:0;
+}
+
+.feature-number{
+  font-size:11px;
+  opacity:.35;
+}
+
+.feature h3{
+  margin-top:55px;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:25px;
+}
+
+.feature p{
+  margin-top:15px;
+  font-size:13px;
+  line-height:1.7;
+  opacity:.5;
+}
+
+/* CTA */
+
+.cta{
+  text-align:center;
+  padding:170px 6%;
+  background:#f1efe9;
+  color:#090909;
+}
+
+.cta small{
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:10px;
+  opacity:.5;
+}
+
+.cta h2{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(55px,9vw,125px);
+  letter-spacing:-7px;
+  line-height:.85;
+  margin:25px auto 45px;
+  max-width:900px;
+}
+
+.cta .btn{
+  background:#090909;
+  color:#f5f3ee;
+}
+
+/* FOOTER */
+
+footer{
+  padding:65px 6% 35px;
+}
+
+.footer-top{
+  display:flex;
+  justify-content:space-between;
+  padding-bottom:60px;
+}
+
+.footer-logo{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:42px;
+  font-weight:700;
+  letter-spacing:-3px;
+}
+
+.footer-links{
+  display:flex;
+  gap:50px;
+}
+
+.footer-links div{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  font-size:12px;
+  opacity:.55;
+}
+
+.footer-links strong{
+  color:#fff;
+  opacity:1;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.1);
+  padding-top:22px;
+  display:flex;
+  justify-content:space-between;
+  font-size:10px;
+  opacity:.35;
+}
+
+/* REVEAL ANIMATION */
+
+.reveal{
+  opacity:0;
+  transform:translateY(45px);
+  transition:opacity .9s ease,transform .9s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  .nav{
+    height:64px;
+    padding:0 5%;
+  }
+
+  .logo{
+    font-size:21px;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .menu{
+    display:block;
+  }
+
+  .hero{
+    min-height:92vh;
+    padding:120px 5% 45px;
+  }
+
+  .hero h1{
+    font-size:19vw;
+    letter-spacing:-3px;
+  }
+
+  .hero-bottom{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:22px;
+  }
+
+  .hero-description{
+    font-size:13px;
+  }
+
+  .section{
+    padding:90px 5%;
+  }
+
+  .section-header{
+    display:block;
+    margin-bottom:35px;
+  }
+
+  .section-note{
+    margin-top:20px;
+  }
+
+  .products{
+    grid-template-columns:1fr;
+    gap:45px;
+  }
+
+  .editorial{
+    min-height:70vh;
+    padding:80px 5%;
+  }
+
+  .editorial h2{
+    letter-spacing:-3px;
+  }
+
+  .features{
+    grid-template-columns:1fr;
+  }
+
+  .feature{
+    border-right:0;
+    border-bottom:1px solid rgba(255,255,255,.1);
+    padding:40px 5%;
+  }
+
+  .feature h3{
+    margin-top:35px;
+  }
+
+  .cta{
+    padding:110px 5%;
+  }
+
+  .cta h2{
+    letter-spacing:-4px;
+  }
+
+  .footer-top{
+    flex-direction:column;
+    gap:50px;
+  }
+
+  .footer-links{
+    gap:35px;
+  }
+
+  .footer-bottom{
+    flex-direction:column;
+    gap:10px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+  <a href="#" class="logo">NE<span>fits</span></a>
+
+  <div class="nav-links">
+    <a href="#shop">Shop</a>
+    <a href="#story">Story</a>
+    <a href="#quality">Quality</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <div class="menu">☰</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content reveal">
+
+    <div class="eyebrow">Independent Streetwear — India</div>
+
+    <h1>
+      WEAR<br>
+      <em>YOUR</em><br>
+      DIFFERENCE.
+    </h1>
+
+    <div class="hero-bottom">
+      <p class="hero-description">
+        Premium everyday essentials built with heavyweight fabrics,
+        considered silhouettes and a mindset that refuses ordinary.
+      </p>
+
+      <a href="#shop" class="btn">Explore Drop</a>
+    </div>
+
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>NEfits</span>
+    <span>Built Different</span>
+    <span>Premium Streetwear</span>
+    <span>Made For Movement</span>
+    <span>NEfits</span>
+    <span>Built Different</span>
+    <span>Premium Streetwear</span>
+    <span>Made For Movement</span>
+  </div>
+</div>
+
+<section class="section" id="shop">
+
+  <div class="section-header reveal">
+    <h2 class="section-title">THE<br>DROP.</h2>
+
+    <p class="section-note">
+      Pieces designed to live beyond a single season.
+      Clean silhouettes. Heavyweight comfort. No unnecessary noise.
+    </p>
+  </div>
+
+  <div class="products">
+
+    <article class="product reveal">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=85" alt="Premium oversized tee">
+      </div>
+
+      <div class="product-info">
+        <div>
+          <div class="product-name">Heavyweight Oversized Tee</div>
+          <div class="product-type">240 GSM / Cotton</div>
+        </div>
+
+        <div class="price">₹749</div>
+      </div>
+    </article>
+
+    <article class="product reveal">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=1200&q=85" alt="Premium hoodie">
+      </div>
+
+      <div class="product-info">
+        <div>
+          <div class="product-name">Essential Heavy Hoodie</div>
+          <div class="product-type">Premium Fleece</div>
+        </div>
+
+        <div class="price">₹1,199</div>
+      </div>
+    </article>
+
+    <article class="product reveal">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1200&q=85" alt="Streetwear shirt">
+      </div>
+
+      <div class="product-info">
+        <div>
+          <div class="product-name">Signature Box Fit</div>
+          <div class="product-type">Everyday Essential</div>
+        </div>
+
+        <div class="price">₹699</div>
+      </div>
+    </article>
+
+    <article class="product reveal">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=85" alt="Premium fashion">
+      </div>
+
+      <div class="product-info">
+        <div>
+          <div class="product-name">Minimal Ringer Tee</div>
+          <div class="product-type">Limited Colourway</div>
+        </div>
+
+        <div class="price">₹549</div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="editorial" id="story">
+
+  <div class="editorial-content reveal">
+
+    <div class="eyebrow">THE NEfits STANDARD</div>
+
+    <h2>
+      LESS<br>
+      NOISE.<br>
+      MORE<br>
+      CHARACTER.
+    </h2>
+
+    <p>
+      We believe clothing doesn't need to scream to stand out.
+      Every NEfits piece is built around fabric, fit and attitude —
+      the three things that actually matter.
+    </p>
+
+  </div>
+
+</section>
+
+<section class="section" id="quality">
+
+  <div class="section-header reveal">
+    <h2 class="section-title">WHY<br>NEfits?</h2>
+
+    <p class="section-note">
+      Details you notice when the product is actually in your hands.
+    </p>
+  </div>
+
+  <div class="features">
+
+    <div class="feature reveal">
+      <div class="feature-number">01</div>
+      <h3>Heavyweight Feel</h3>
+      <p>
+        Carefully selected fabrics with structure,
+        comfort and a premium hand-feel.
+      </p>
+    </div>
+
+    <div class="feature reveal">
+      <div class="feature-number">02</div>
+      <h3>Considered Fit</h3>
+      <p>
+        Relaxed silhouettes designed to look intentional,
+        not simply oversized.
+      </p>
+    </div>
+
+    <div class="feature reveal">
+      <div class="feature-number">03</div>
+      <h3>Limited Drops</h3>
+      <p>
+        Small collections instead of endless products.
+        Wear something that isn't everywhere.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="cta" id="contact">
+
+  <small>Ready when you are</small>
+
+  <h2>
+    FIND YOUR<br>
+    UNIFORM.
+  </h2>
+
+  <a href="#shop" class="btn">Shop NEfits</a>
+
+</section>
+
+<footer>
+
+  <div class="footer-top">
+
+    <div class="footer-logo">NEfits</div>
+
+    <div class="footer-links">
+
+      <div>
+        <strong>Explore</strong>
+        <a href="#shop">Shop</a>
+        <a href="#story">Our Story</a>
+      </div>
+
+      <div>
+        <strong>Connect</strong>
+        <a href="https://instagram.com/nefits_official" target="_blank">Instagram</a>
+        <a href="https://wa.me/" target="_blank">WhatsApp</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 NEfits. All rights reserved.</span>
+    <span>Designed for those who move different.</span>
+  </div>
+
+</footer>
+
+<script>
+
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+      }
+    });
+  },
+  {threshold:.12}
+);
+
+document.querySelectorAll('.reveal').forEach(el => {
+  observer.observe(el);
+});
+
+</script>
+
+</body>
+  </html>
